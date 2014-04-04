@@ -126,11 +126,12 @@ int main( int argc, char *argv[] ) {
 	}
 	
 	if (path == NULL) {
-		path = malloc(10); // arbitrary initial value, just don't overflow it yet
 #ifdef TARGET_GP2X
+		path = malloc(10); // arbitrary initial value, just don't overflow it yet
 		strcpy(path, "/mnt/sd/");
-#else
-		strcpy(path, "./");
+#elif defined(TARGET_UNIX) || defined(TARGET_GCW_ZERO)
+		path = malloc(strlen(getenv("HOME")) + 1);
+		strcpy(path, getenv("HOME"));
 #endif
 		
 		populate_files(path, true);
