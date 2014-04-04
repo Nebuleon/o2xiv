@@ -158,9 +158,11 @@ int main( int argc, char *argv[] ) {
 			menu_input();
 		} else { // viewing input
 			switch (last_key) {
+#if defined(TARGET_GP2X) || defined(TARGET_UNIX)
 				case SDLK_ESCAPE:
 					quit = true;
 					break;
+#endif
 					
 				case GP2X_KB_SELECT:
 					toggle_file_selector();

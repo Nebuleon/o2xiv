@@ -47,6 +47,8 @@
 #endif
 #endif
 
+#if defined(TARGET_GP2X)
+
 #define GP2X_KB_UP     SDLK_UP
 #define GP2X_KB_DOWN   SDLK_DOWN
 #define GP2X_KB_LEFT   SDLK_LEFT
@@ -59,6 +61,23 @@
 #define GP2X_KB_B      SDLK_PAGEDOWN
 #define GP2X_KB_SELECT SDLK_BACKSLASH
 #define GP2X_KB_START  SDLK_RETURN
+
+#elif defined(TARGET_GCW_ZERO)
+
+#define GP2X_KB_UP     SDLK_UP
+#define GP2X_KB_DOWN   SDLK_DOWN
+#define GP2X_KB_LEFT   SDLK_LEFT
+#define GP2X_KB_RIGHT  SDLK_RIGHT
+#define GP2X_KB_L      SDLK_TAB
+#define GP2X_KB_R      SDLK_BACKSPACE
+#define GP2X_KB_Y      SDLK_SPACE
+#define GP2X_KB_X      SDLK_LSHIFT
+#define GP2X_KB_A      SDLK_LCTRL
+#define GP2X_KB_B      SDLK_LALT
+#define GP2X_KB_SELECT SDLK_ESCAPE
+#define GP2X_KB_START  SDLK_RETURN
+
+#endif
 
 extern SDLKey last_key;
 extern Uint8 *key_down;

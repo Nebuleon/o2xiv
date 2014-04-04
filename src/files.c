@@ -56,9 +56,11 @@ void toggle_file_selector( void ) {
 
 void file_selector_input( void ) {
 	switch (last_key) {
+#if defined(TARGET_GP2X) || defined(TARGET_UNIX)
 		case SDLK_ESCAPE:
 			quit = true;
 			break;
+#endif
 			
 		case GP2X_KB_START:
 			toggle_menu();

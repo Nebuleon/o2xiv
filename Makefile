@@ -36,10 +36,12 @@ ifeq ($(PLATFORM), GCW_ZERO)
 	SDL_CFLAGS := $(shell $(SYSROOT)/usr/bin/sdl-config --cflags)
 	SDL_LDFLAGS := $(shell $(SYSROOT)/usr/bin/sdl-config --libs)
 	STRIP := $(GCW_ZERO_CHAIN)strip
+	OPT_CFLAGS := -DTARGET_GCW_ZERO
 endif
 ifeq ($(PLATFORM), UNIX)
-	SDL_CFLAGS := $(shell sdl-config --cflags) -DTARGET_UNIX
+	SDL_CFLAGS := $(shell sdl-config --cflags)
 	SDL_LDFLAGS := $(shell sdl-config --libs)
+	OPT_CFLAGS := -DTARGET_UNIX
 endif
 
 CFLAGS := --std=c99 -pedantic -Wall -Wextra -Werror -I$(CURDIR)/src/ $(DEBUG_FLAGS) $(SDL_CFLAGS) $(OPT_CFLAGS)
