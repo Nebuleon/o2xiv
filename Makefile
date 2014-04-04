@@ -64,6 +64,14 @@ obj/%.d : obj/%.o
 obj/%.o : src/%.c
 	$(CC) -o $@ -MMD -c $(CFLAGS) $<
 
+opk: $(TARGET)
+	rm -rf .opk_data
+	mkdir .opk_data
+	cp o2xiv.png default.gcw0.desktop .opk_data
+	cp $< .opk_data
+	$(STRIP) .opk_data/$<
+	mksquashfs .opk_data o2xiv.opk -all-root -noappend -no-exports -no-xattrs -no-progress >/dev/null
+
 .PHONY : clean
 
 clean :

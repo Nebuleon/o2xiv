@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Name=o2xiv
+Comment=Image viewer
+Icon=o2xiv
+Exec=o2xiv
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=applications;
