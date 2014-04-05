@@ -130,8 +130,18 @@ int main( int argc, char *argv[] ) {
 		path = malloc(10); // arbitrary initial value, just don't overflow it yet
 		strcpy(path, "/mnt/sd/");
 #elif defined(TARGET_UNIX) || defined(TARGET_GCW_ZERO)
-		path = malloc(strlen(getenv("HOME")) + 1);
-		strcpy(path, getenv("HOME"));
+		{
+			int path_len = strlen(getenv("HOME"));
+			
+			path = malloc(path_len + 1);
+			strcpy(path, getenv("HOME"));
+			// If the path does not end with a slash, add one. The file chooser
+			// requires this.
+			if (path_len == 0 || (path_len > 0 && path[path_len - 1] != '/')) {
+				path = realloc(path, path_len + 2);
+				strcat(path, "/");
+			}
+		}
 #endif
 		
 		populate_files(path, true);
