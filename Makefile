@@ -56,6 +56,11 @@ OBJS := $(foreach obj, $(OBJS), obj/$(obj))
 $(TARGET) : $(OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
+$(OBJS) : | obj
+
+obj :
+	mkdir obj
+
 ifneq ($(MAKECMDGOALS), clean)
 -include $(OBJS:.o=.d)
 endif
@@ -75,5 +80,5 @@ opk: $(TARGET)
 .PHONY : clean
 
 clean :
-	rm -f obj/*.o obj/*.d
+	rm -rf obj
 	rm -f $(TARGET)
