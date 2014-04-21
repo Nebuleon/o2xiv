@@ -164,7 +164,11 @@ void char8x8( SDL_Surface *const surface, int x, int y, const char c, const Uint
 	Uint8 *s = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
 	
 	for (unsigned int y = 0; y < 8; y++) {
-		int temp = fontdata8x8[(int)c][y];
+		int temp;
+		if (c > sizeof(fontdata8x8) / sizeof(fontdata8x8[0]))
+			temp = fontdata8x8[0x7F][y];
+		else
+			temp = fontdata8x8[(int)c][y];
 		for (unsigned int x = 0; x < 8; x++) {
 			if (temp & 0x80)
 				*(Uint16 *)s = color;
