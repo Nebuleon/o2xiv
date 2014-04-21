@@ -168,7 +168,7 @@ void char8x8( SDL_Surface *const surface, int x, int y, const char c, const Uint
 	
 	for (unsigned int y = 0; y < 8; y++) {
 		int temp;
-		if (c > sizeof(fontdata8x8) / sizeof(fontdata8x8[0]))
+		if ((unsigned int) c > sizeof(fontdata8x8) / sizeof(fontdata8x8[0]))
 			temp = fontdata8x8[0x7F][y];
 		else
 			temp = fontdata8x8[(int)c][y];
