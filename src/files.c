@@ -36,6 +36,7 @@
 #endif
 
 bool file_selector = false;
+bool show_hidden = false;
 
 char *path = NULL;
 
@@ -52,6 +53,11 @@ void toggle_file_selector( void ) {
 	} else {
 		SDL_UnlockMutex(files_modify_mutex);
 	}
+}
+
+void toggle_file_visibility( void ) {
+	// repopulate the directory if file visibility was changed
+	populate_files(path, true);
 }
 
 void file_selector_input( void ) {
@@ -204,10 +210,13 @@ void populate_files( const char *path, bool only_images ) {
 		
 		while ((entry = readdir(dir)) != NULL && file_min < countof(files)) {
 			if (entry->d_type == DT_DIR && strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0) {
-				files[file_min] = realloc(files[file_min], strlen(entry->d_name) + 1 + 1);
-				strcpy(files[file_min], entry->d_name);
-				strcat(files[file_min], "/");
-				file_min++;
+
+				if(show_hidden || (!show_hidden && entry->d_name[0] != '.')) {
+					files[file_min] = realloc(files[file_min], strlen(entry->d_name) + 1 + 1);
+					strcpy(files[file_min], entry->d_name);
+					strcat(files[file_min], "/");
+					file_min++;
+				}
 			}
 		}
 		

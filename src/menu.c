@@ -78,9 +78,13 @@ void menu_input( void ) {
 					toggle_file_selector();
 					break;
 				case 10:
-					toggle_menu();
+					show_hidden = !show_hidden;
+					toggle_file_visibility();
 					break;
 				case 11:
+					toggle_menu();
+					break;
+				case 12:
 					quit = true;
 					break;
 			}
@@ -94,7 +98,7 @@ void menu_input( void ) {
 	if (input[0]) {
 		switch (--menu_select) {
 			case 1:
-				menu_select = 11;
+				menu_select = 12;
 				break;
 			case 5:
 			case 8:
@@ -110,7 +114,7 @@ void menu_input( void ) {
 			case 8:
 				menu_select++;
 				break;
-			case 12:
+			case 13:
 				menu_select = 2;
 				break;
 		}
@@ -131,13 +135,15 @@ void draw_menu( void ) {
 		"\177 Auto-rotate",
 		"",
 		"Browse...",
+		"\177 Show hidden",
 		"Return",
 		"Quit"
 	};
 	items[6][0] = auto_fit ? '\014' : '\015';
 	items[7][0] = auto_rotate ? '\014' : '\015';
+	items[10][0] = show_hidden ? '\014' : '\015';
 	
-	SDL_Rect temp_rect = { 8, 15, 8 + 14 * 8 + 8, 10 + 9 * 10 + 3 * 6 + 10 };
+	SDL_Rect temp_rect = { 8, 15, 8 + 14 * 8 + 8, 10 + 10 * 10 + 3 * 6 + 10 };
 	SDL_FillRect(surface, &temp_rect, 0x0000);
 	
 	if SDL_MUSTLOCK(surface) SDL_LockSurface(surface);

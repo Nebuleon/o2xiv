@@ -22,6 +22,7 @@
 #include <stdbool.h>
 
 extern bool file_selector;
+extern bool show_hidden;
 
 extern char *path;
 
@@ -30,6 +31,7 @@ extern char *files[1000];
 extern unsigned int file_min, file_max;
 
 void toggle_file_selector( void );
+void toggle_file_visibility( void );
 
 void file_selector_input( void );
 void draw_file_selector( void );
