@@ -1,7 +1,8 @@
 [Desktop Entry]
 
-Name=o2xiv
-Comment=Image viewer
+Name=Image Viewer
+Comment=View screenshots, photos, etc.
+X-OD-Manual=manual-en.txt
 Icon=o2xiv
 Exec=o2xiv
 Terminal=false
