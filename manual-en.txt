@@ -41,6 +41,7 @@ After pressing Start while viewing an image, you are greeted with the following 
 > Auto-fit: If this setting is enabled, selecting new images shows them as if by the 'Fit inside' command. It is enabled by default.
 > Auto-rotate: If this setting is enabled, selecting new images shows them rotated if their width and height would fill more of the screen if they were reversed.
 > Browse...: Return to the file selector. Equivalent to pressing Select.
+> Show hidden: If this setting is enabled, hidden (starting with a '.' character) files and directories are visible in the browser. It is disabled by default.
 > Return: Return to the image. Equivalent to pressing Start again.
 
 == Exiting o2xiv ==
