@@ -44,7 +44,7 @@ ifeq ($(PLATFORM), UNIX)
 	OPT_CFLAGS := -DTARGET_UNIX
 endif
 
-CFLAGS := --std=c99 -pedantic -Wall -Wextra -Werror -I$(CURDIR)/src/ $(DEBUG_FLAGS) $(SDL_CFLAGS) $(OPT_CFLAGS)
+CFLAGS := --std=c99 -pedantic -Wall -Wextra -I$(CURDIR)/src/ $(DEBUG_FLAGS) $(SDL_CFLAGS) $(OPT_CFLAGS)
 LDFLAGS := $(SDL_LDFLAGS) -lSDL_image -ljpeg
 
 ####################################################
